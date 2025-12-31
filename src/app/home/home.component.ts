@@ -17,93 +17,90 @@ products = [
     {
       id: 1,
       name: 'Piñata 1',
-      price: '10 000 FCFA',
-      img: ['image/im1.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '15 000 FCFA',
+      img: ['image/im1.jpg']
     },
     {
       id: 2,
       name: 'Piñata 2',
-      price: '12 000 FCFA',
-      img: ['image/im2.jpg','image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '15 000 FCFA',
+      img: ['image/im2.jpg']
     },
     {
       id: 3,
       name: 'Piñata 3',
-      price: '15 000 FCFA',
-      img: ['image/im3.jpg','image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '12 000 FCFA',
+      img: ['image/im3.jpeg','image/im31.jpeg']
     },
     {
       id: 4,
       name: 'Piñata 4', 
-      price: '9 000 FCFA',
-      img: ['image/im4.jpg','image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '12 000 FCFA',
+      img: ['image/im4.jpg', 'image/im41.jpg']
     },
     {
       id: 5,
       name: 'Piñata 5',   
-      price: '11 000 FCFA',
-      img: ['image/im5.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '15 000 FCFA',
+      img: ['image/im5.jpg', 'image/im51.jpg']
     },
     {
       id: 6,
       name: 'Piñata 6', 
-      price: '14 000 FCFA',
-      img: ['image/im6.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '15 000 FCFA',
+      img: ['image/im6.jpeg']
     },
     {
       id: 7,
       name: 'Piñata 7',
-      price: '13 000 FCFA',
-      img: ['image/im7.jpg','image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '15 000 FCFA',
+      img: ['image/im7.jpg']
     },
     {
       id: 8,
       name: 'Piñata 8',
-      price: '16 000 FCFA',
-      img: ['image/im8.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '15 000 FCFA',
+      img: ['image/im8.jpg']
     },
     {
       id: 9,
       name: 'Piñata 9',
-      price: '10 500 FCFA',
-      img: ['image/im9.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '15 000 FCFA',
+      img: ['image/im9.jpg', 'image/im91.jpg']
     },
     {
       id: 10,
       name: 'Piñata 10',
-      price: '12 500 FCFA',
-      img: ['image/im10.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '15 000 FCFA',
+      img: ['image/im10.png']
     },
     {
       id: 11,
       name: 'Piñata 11',
-      price: '15 500 FCFA', 
-      img: ['image/im11.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '25 000 FCFA', 
+      img: ['image/im11.jpg']
     },
     { 
       id: 12,
       name: 'Piñata 12',
-      price: '17 000 FCFA',
-      img: ['image/im12.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '15 000 FCFA',
+      img: ['image/im12.jpg']
     },
     {
       id: 13,
       name: 'Piñata 13',
-      price: '18 500 FCFA',
-      img: ['image/im13.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '25 000 FCFA',
+      img: ['image/im13.jpg', 'image/im131.jpg']
     },
+    
+
     {
       id: 14,
       name: 'Piñata 14',
-      price: '20 000 FCFA',
-      img: ['image/im14.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
+      price: '15000 FCFA',
+      img: ['image/im14.jpg']
     },
-    {
-      id: 15,
-      name: 'Piñata 15',
-      price: '22 500 FCFA',
-      img: ['image/im15.jpg', 'image/im2.jpg', 'image/im6.jpg', 'image/im8.jpg', 'image/im10.jpg']
-    }
+
   ];
 
 
@@ -182,12 +179,46 @@ products = [
         break;
     }
   }
+// ===== TELECHARGER IMAGE AVEC FILIGRANE ===== //
+  downloadImageWithWatermark(imageUrl: string): void {
+  const img = new Image();
+  img.crossOrigin = 'anonymous'; // important si images externes
+  img.src = imageUrl;
+
+  img.onload = () => {
+    const canvas = document.createElement('canvas');
+    const ctx = canvas.getContext('2d');
+
+    if (!ctx) return;
+
+    canvas.width = img.width;
+    canvas.height = img.height;
+
+    // Dessiner l'image
+    ctx.drawImage(img, 0, 0);
+
+    // Style du texte
+    ctx.font = 'bold 48px Arial';
+    ctx.fillStyle = 'rgba(255, 255, 255, 0.5)'; // blanc transparent
+    ctx.textAlign = 'center';
+    ctx.textBaseline = 'middle';
+
+    // Rotation pour rendre le vol plus difficile
+    ctx.translate(canvas.width / 2, canvas.height / 2);
+    ctx.rotate(-Math.PI / 6);
+
+    // Texte du filigrane
+    ctx.fillText('Thiès Piñata', 0, 0);
+
+    // Télécharger l'image
+    const link = document.createElement('a');
+    link.download = 'thies-pinata.jpg';
+    link.href = canvas.toDataURL('image/jpeg', 0.95);
+    link.click();
+  };
 }
-
-
-
-
-
+  
+}
 
 
 
