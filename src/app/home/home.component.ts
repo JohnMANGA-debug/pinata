@@ -100,6 +100,13 @@ products = [
       price: '15000 FCFA',
       img: ['image/im14.jpg']
     },
+    
+    {
+      id: 15,
+      name: 'Piñata 15',
+      price: '15000 FCFA',
+      img: ['image/im15.jpeg']
+    },
 
   ];
 
@@ -180,9 +187,17 @@ products = [
     }
   }
 // ===== TELECHARGER IMAGE AVEC FILIGRANE ===== //
+  // ⚠️ ATTENTION: Cette fonction peut poser des risques de sécurité
+  // Elle permet le téléchargement d'images avec filigrane
+  // Utilisez uniquement avec des images de domaines autorisés
   downloadImageWithWatermark(imageUrl: string): void {
+  // Vérifier que l'URL est d'un domaine autorisé (optionnel mais recommandé)
+  // const allowedDomains = ['image/', 'yourdomain.com'];
+  // if (!allowedDomains.some(domain => imageUrl.includes(domain))) return;
+  
   const img = new Image();
-  img.crossOrigin = 'anonymous'; // important si images externes
+  // ⚠️ crossOrigin 'anonymous' peut poser des risques - à restreindre en production
+  // img.crossOrigin = 'anonymous';
   img.src = imageUrl;
 
   img.onload = () => {
