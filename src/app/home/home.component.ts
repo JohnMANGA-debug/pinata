@@ -111,7 +111,7 @@ products = [
       id: 16,
       name: 'Piñata 16',
       price: '15000 FCFA',
-      img: ['image/im16.jpeg']
+      img: ['image/im166.jpeg']
     },
 
   ];
