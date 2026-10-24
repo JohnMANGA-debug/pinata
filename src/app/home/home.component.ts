@@ -117,7 +117,7 @@ products = [
   ];
 
 
-/* Pagination */
+/* Pagination  */
   itemsPerPage = 6;
   visibleCount = this.itemsPerPage;
 
